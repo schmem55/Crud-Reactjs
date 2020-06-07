@@ -2,3 +2,10 @@
     margin: 40px;
     border: 5px dotted pink;
 }
+.UpdatingView{
+    background-color: red;
+    justify-content: center;
+}
+.Updating{
+    border: 5px dotted pink;
+}
