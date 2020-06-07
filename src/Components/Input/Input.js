@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './input.css';
-
+import Members from '../Members/Members'
 function Input() {
+  const [members,setMembers] = useState([])
+
+
   return (
     <div>
       <h1>CRUD EXCERCISE</h1>
       <input/>
-      <button>Add new member</button>
-      <div className="Members">
-        <p>No members added</p>
-      </div>
+      <button onClick={()=>setMembers("rien")}>Add new member</button>
+      <Members/>
     </div>
   );
 }
