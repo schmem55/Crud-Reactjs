@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import Input from './Components/Input/Input.js'
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Input/>
@@ -11,4 +11,3 @@ function App() {
   );
 }
 
-export default App;

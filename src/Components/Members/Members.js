@@ -1,12 +1,14 @@
 import React from 'react';
 import './members.css';
 
-function Members() {
+export default function Members(props) {
   return (
     <div className="Members">
-    No members at this time
+    {props.members.length>0? props.members.map((k,i)=>
+        <p key={i}>{k}</p>
+    ) :<p>no members added</p>}
     </div>
   );
 }
 
-export default Members;
+

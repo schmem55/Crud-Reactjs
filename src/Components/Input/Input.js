@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import './input.css';
 import Members from '../Members/Members'
-function Input() {
+
+export default function Input(props) {
   const [members,setMembers] = useState([])
-
-
+  const [value,setValue] = useState()
+  
+  async function handleSubmit(e){
+    e.preventDefault()
+    await setMembers(prevState=>[...members,value])
+    setValue('')
+    
+  }
   return (
     <div>
       <h1>CRUD EXCERCISE</h1>
-      <input/>
-      <button onClick={()=>setMembers("rien")}>Add new member</button>
-      <Members/>
+      <form onSubmit={(e)=>handleSubmit(e)}>
+        <label>
+          Name:
+          <input value ={value?value:''} onChange={e => setValue(e.target.value)}/>
+        </label>
+        <input type="submit" value="Add Member" />
+      </form>
+      <Members members = {members}/>
     </div>
   );
 }
 
-export default Input;
