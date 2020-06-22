@@ -12,6 +12,7 @@ export default function Input(props) {
   })
 
   async function handleSubmit(e){
+    
     e.preventDefault()
     let indexMember = members.length +1;
     let newMember = {
@@ -78,7 +79,8 @@ export default function Input(props) {
           <form  onSubmit={(e)=>handleUpdate(e)} >
             <label>
               Name:
-              <input value ={memberToUpdate.name?memberToUpdate.name:''} onChange={e => setMemberToUpdate({
+              <input value ={memberToUpdate.name?memberToUpdate.name:''} 
+                onChange={e => setMemberToUpdate({
                 ["id"]:memberToUpdate.id,
                 ["name"]:e.target.value
                 })}/>
