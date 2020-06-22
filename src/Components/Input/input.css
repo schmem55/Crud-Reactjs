@@ -1,3 +1,12 @@
+.Forms{
+    display: flex;
+    justify-content: space-around;
+    background-color: indigo;
+    height: 100px;
+    align-items: center;
+    color: white;
+
+}
 .Members{
     margin: 40px;
     border: 5px dotted pink;
@@ -8,4 +17,25 @@
 }
 .Updating{
     border: 5px dotted pink;
+}
+.UserDetails{
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;   
+}
+.Buttons{
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+}
+
+button{
+    height: 50px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: indianred;
+    color: white;
+    border-width: 0;
 }

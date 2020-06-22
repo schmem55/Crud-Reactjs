@@ -53,21 +53,29 @@ export default function Input(props) {
   return (
     <div>
       <h1>CRUD EXCERCISE</h1>
-      <form onSubmit={(e)=>handleSubmit(e)}>
-        <label>
-          Name:
-          <input value ={value?value:''} onChange={e => setValue(e.target.value)}/>
-        </label>
-        <input type="submit" value="Add Member" />
-      </form>
+      
+        <div className="Forms">  
+          <form onSubmit={(e)=>handleSubmit(e)}>
+            <label>
+              Name:
+              <input value ={value?value:''} onChange={e => setValue(e.target.value)}/>
+            </label>
+            <input type="submit" value="Add Member" />
+          </form>
+        </div>
+      
+    
       
       <div className="Members">
         {members.length>0?
           members.map((k)=>
-            <p key={k.id}>
+            <p className="UserDetails" key={k.id}>
               {k.name}
-              <button onClick={()=>deleteMember(k.id)}>delete</button>
-              <button onClick={()=>updateMember(k.id)}>update</button>
+              <div className="Buttons">
+                <button onClick={()=>deleteMember(k.id)}>delete</button>
+                <button onClick={()=>updateMember(k.id)}>update</button>
+              </div>
+            
             </p>
         ):
         <p>no members added</p>}
