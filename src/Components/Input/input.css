@@ -31,7 +31,7 @@
     justify-content: space-around;
 }
 
-button{
+button,.Add{
     height: 50px;
     width: 100px;
     border-radius: 15px;

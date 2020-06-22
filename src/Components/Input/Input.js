@@ -3,7 +3,9 @@ import './input.css';
 
 export default function Input(props) {
   const [members,setMembers] = useState([])
-  const [value,setValue] = useState()
+
+  const [name,setName] = useState()
+  const [amount,setAmount] = useState()
 
   const [isUpdating,setIsUpdating] = useState(false)
   const [memberToUpdate,setMemberToUpdate]=useState({
@@ -17,10 +19,12 @@ export default function Input(props) {
     let indexMember = members.length +1;
     let newMember = {
       id:indexMember,
-      name:value
+      name:name,
+      amount:amount
     }
     await setMembers(prevState=>[...members,newMember])
-    setValue('')
+    setName('')
+    setAmount('')
   }
 
   function deleteMember (id){
@@ -30,7 +34,8 @@ export default function Input(props) {
   function updateMember(id){
     setMemberToUpdate({
       id:id,
-      name:""
+      name:"",
+      amount:""
     })
 
     setIsUpdating(prevState => true)
@@ -46,7 +51,7 @@ export default function Input(props) {
     }
 
     await setMembers(members.map((member)=>(member.id === newMember.id? newMember:member)))
-    setValue('')
+    setName('')
     setIsUpdating(prevState=>false)
   }
 
@@ -54,15 +59,21 @@ export default function Input(props) {
     <div>
       <h1>CRUD EXCERCISE</h1>
       
-        <div className="Forms">  
+      
           <form onSubmit={(e)=>handleSubmit(e)}>
+           <div className="Forms">  
             <label>
               Name:
-              <input value ={value?value:''} onChange={e => setValue(e.target.value)}/>
+              <input value ={name?name:''} onChange={e => setName(e.target.value)}/>
             </label>
-            <input type="submit" value="Add Member" />
+            <label>
+              Amount:
+              <input value ={amount?amount:''} onChange={e => setAmount(e.target.value)}/>
+            </label>
+          </div>
+            <input className="Add"type="submit" value="Add " />
           </form>
-        </div>
+       
       
     
       
