@@ -7,13 +7,15 @@ export default function Input(props) {
   const [name,setName] = useState()
   const [amount,setAmount] = useState()
   const [mitzva,setMitzva] = useState()
+  const [date,setDate] = useState()
 
   const [isUpdating,setIsUpdating] = useState(false)
   const [memberToUpdate,setMemberToUpdate]=useState({
     id:"",
     name:"",
     amount:"",
-    mitzva:""
+    mitzva:"",
+    date:"'"
   })
 
   async function handleSubmit(e){
@@ -24,12 +26,14 @@ export default function Input(props) {
       id:indexMember,
       name:name,
       amount:amount,
-      mitzva:mitzva
+      mitzva:mitzva,
+      date:date
     }
     await setMembers(prevState=>[...members,newMember])
     setName('')
     setAmount('')
     setMitzva('')
+    setDate('')
   }
 
   function deleteMember (id){
@@ -41,7 +45,8 @@ export default function Input(props) {
       id:id,
       name:"",
       amount:"",
-      mitzva:""
+      mitzva:"",
+      date:""
     })
 
     setIsUpdating(prevState => true)
@@ -55,13 +60,15 @@ export default function Input(props) {
       id:memberToUpdate.id,
       name:memberToUpdate.name,
       amount:memberToUpdate.amount,
-      mitzva:memberToUpdate.mitzva
+      mitzva:memberToUpdate.mitzva,
+      date:memberToUpdate.date
     }
 
     await setMembers(members.map((member)=>(member.id === newMember.id? newMember:member)))
     setName('')
     setAmount('')
     setMitzva('')
+    setDate('')
     setIsUpdating(prevState=>false)
   }
 
@@ -82,13 +89,15 @@ export default function Input(props) {
               Amount:
               <input value ={amount?amount:''} onChange={e => setAmount(e.target.value)}/>
             </label>
+            <label>
+              Date:
+              <input value ={date?date:''} onChange={e => setDate(e.target.value)}/>
+            </label>
           </div>
             <input className="Add"type="submit" value="Add " />
           </form>
        
-      
     
-      
       <div className="Members">
         <div className="Title">
           <div className="UserItems">
@@ -100,6 +109,9 @@ export default function Input(props) {
             </span>
             <span>
               Mitzva
+            </span>
+            <span>
+              Date
             </span>
           </div>
           
@@ -117,6 +129,9 @@ export default function Input(props) {
                 </span>
                 <span>
                   {k.mitzva}
+                </span>
+                <span>
+                  {k.date}
                 </span>
                
               </div>
@@ -158,7 +173,7 @@ export default function Input(props) {
                   })}/>
               </label>
               <label>
-                Amount:
+                Mitzva:
                 <input 
                   value ={memberToUpdate.mitzva?memberToUpdate.mitzva:''} 
                   onChange={e => setMemberToUpdate({
@@ -166,6 +181,18 @@ export default function Input(props) {
                   "name":memberToUpdate.name,
                   "amount":memberToUpdate.amount,
                   "mitzva":e.target.value
+                  })}/>
+              </label>
+              <label>
+                Date:
+                <input 
+                  value ={memberToUpdate.date?memberToUpdate.date:''} 
+                  onChange={e => setMemberToUpdate({
+                  "id":memberToUpdate.id,
+                  "name":memberToUpdate.name,
+                  "amount":memberToUpdate.amount,
+                  "mitzva":memberToUpdate.mitzva,
+                  "date":e.target.value
                   })}/>
               </label>
               <input type="submit" value="Update Member" />
