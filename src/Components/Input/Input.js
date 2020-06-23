@@ -47,7 +47,8 @@ export default function Input(props) {
     console.log(memberToUpdate)
     let newMember = {
       id:memberToUpdate.id,
-      name:memberToUpdate.name
+      name:memberToUpdate.name,
+      amount:memberToUpdate.amount
     }
 
     await setMembers(members.map((member)=>(member.id === newMember.id? newMember:member)))
@@ -57,9 +58,7 @@ export default function Input(props) {
 
   return (
     <div>
-      <h1>CRUD EXCERCISE</h1>
-      
-      
+      <h1>Exercise</h1>
           <form onSubmit={(e)=>handleSubmit(e)}>
            <div className="Forms">  
             <label>
@@ -80,14 +79,24 @@ export default function Input(props) {
       <div className="Members">
         {members.length>0?
           members.map((k)=>
-            <p className="UserDetails" key={k.id}>
-              {k.name}
+            <div className="UserDetails" key={k.id}>
+
+              <div className="UserNameAndAmount">
+                <span>
+                  {k.name}
+                </span>
+                <span>
+                  {k.amount}
+                </span>
+               
+              </div>
+
               <div className="Buttons">
                 <button onClick={()=>deleteMember(k.id)}>delete</button>
                 <button onClick={()=>updateMember(k.id)}>update</button>
               </div>
             
-            </p>
+            </div>
         ):
         <p>no members added</p>}
       </div>
@@ -95,17 +104,29 @@ export default function Input(props) {
       {isUpdating && (
         <div className="d-flex justify-content-center"> 
           <div className="p-2 col-example text-left Updating">
-          <form  onSubmit={(e)=>handleUpdate(e)} >
-            <label>
-              Name:
-              <input value ={memberToUpdate.name?memberToUpdate.name:''} 
-                onChange={e => setMemberToUpdate({
-                ["id"]:memberToUpdate.id,
-                ["name"]:e.target.value
-                })}/>
-            </label>
-          <input type="submit" value="Add Member" />
-        </form>
+            <form  onSubmit={(e)=>handleUpdate(e)} >
+              <label>
+                Name:
+                <input 
+                  value ={memberToUpdate.name?memberToUpdate.name:''} 
+                  onChange={e => setMemberToUpdate({
+                  "id":memberToUpdate.id,
+                  "name":e.target.value,
+                  "amount":memberToUpdate.amount
+                  })}/>
+              </label>
+              <label>
+                Amount:
+                <input 
+                  value ={memberToUpdate.amount?memberToUpdate.amount:''} 
+                  onChange={e => setMemberToUpdate({
+                  "id":memberToUpdate.id,
+                  "name":memberToUpdate.name,
+                  "amount":e.target.value
+                  })}/>
+              </label>
+              <input type="submit" value="Update Member" />
+            </form>
       
           </div>
 

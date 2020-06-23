@@ -8,6 +8,7 @@
 
 }
 .Members{
+    width: 1500px;
     margin: 40px;
     border: 5px dotted pink;
 }
@@ -23,7 +24,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 30px;   
+    font-size: 30px; 
+
+}
+.UserNameAndAmount{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
 }
 .Buttons{
     display: flex;
