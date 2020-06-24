@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker'
 import './input.css';
 
 export default function Input(props) {
@@ -8,6 +9,7 @@ export default function Input(props) {
   const [amount,setAmount] = useState()
   const [mitzva,setMitzva] = useState()
   const [date,setDate] = useState()
+
 
   const [isUpdating,setIsUpdating] = useState(false)
   const [memberToUpdate,setMemberToUpdate]=useState({
@@ -79,26 +81,28 @@ export default function Input(props) {
            <div className="Forms">  
             <label>
               Name:
-              <input value ={name?name:''} onChange={e => setName(e.target.value)}/>
+              <input required value ={name?name:''} onChange={e => setName(e.target.value)}/>
             </label>
             <label>
               Mitzva:
-              <input value ={mitzva?mitzva:''} onChange={e => setMitzva(e.target.value)}/>
+              <input required value ={mitzva?mitzva:''} onChange={e => setMitzva(e.target.value)}/>
             </label>
             <label>
               Amount:
-              <input value ={amount?amount:''} onChange={e => setAmount(e.target.value)}/>
+              <input required value ={amount?amount:''} onChange={e => setAmount(e.target.value)}/>
             </label>
             <label>
-              Date:
-              <input value ={date?date:''} onChange={e => setDate(e.target.value)}/>
+            Paracha:
+            <input required value ={date?date:''} onChange={e => setDate(e.target.value)}/>
             </label>
+            
+
           </div>
             <input className="Add"type="submit" value="Add " />
           </form>
        
-    
       <div className="Members">
+     
         <div className="Title">
           <div className="UserItems">
             <span>
@@ -147,12 +151,13 @@ export default function Input(props) {
       </div>
 
       {isUpdating && (
-        <div className="d-flex justify-content-center"> 
-          <div className="p-2 col-example text-left Updating">
-            <form  onSubmit={(e)=>handleUpdate(e)} >
+        <div className="Updating"> 
+          <div>
+            <form onSubmit={(e)=>handleUpdate(e)} >
               <label>
                 Name:
                 <input 
+                  required
                   value ={memberToUpdate.name?memberToUpdate.name:''} 
                   onChange={e => setMemberToUpdate({
                   "id":memberToUpdate.id,
@@ -164,6 +169,7 @@ export default function Input(props) {
               <label>
                 Amount:
                 <input 
+                  required
                   value ={memberToUpdate.amount?memberToUpdate.amount:''} 
                   onChange={e => setMemberToUpdate({
                   "id":memberToUpdate.id,
@@ -175,6 +181,7 @@ export default function Input(props) {
               <label>
                 Mitzva:
                 <input 
+                  required
                   value ={memberToUpdate.mitzva?memberToUpdate.mitzva:''} 
                   onChange={e => setMemberToUpdate({
                   "id":memberToUpdate.id,
@@ -184,8 +191,9 @@ export default function Input(props) {
                   })}/>
               </label>
               <label>
-                Date:
+                Paracha:
                 <input 
+                  required
                   value ={memberToUpdate.date?memberToUpdate.date:''} 
                   onChange={e => setMemberToUpdate({
                   "id":memberToUpdate.id,

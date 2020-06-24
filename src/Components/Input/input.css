@@ -1,7 +1,7 @@
 .Forms{
     display: flex;
     justify-content: space-around;
-    background-color: indigo;
+    background-color: burlywood;
     height: 100px;
     align-items: center;
     color: white;
@@ -10,10 +10,10 @@
 .Members{
     width: 1500px;
     margin: 40px;
-    border: 5px dotted pink;
+    border: 5px dotted black;
 }
 .Title{
-    background-color:#92ced4;
+    background-color:burlywood;
     height: 70px;
     font-size: 32px;
     color:white;
@@ -22,12 +22,11 @@
     align-items : center;
 }
 
-.UpdatingView{
-    background-color: red;
-    justify-content: center;
-}
 .Updating{
-    border: 5px dotted pink;
+    margin-top: 50px;
+    height: 100px;
+    margin-left: 40px;
+    width: 1500px;
 }
 .UserDetails{
     height: 100px;
@@ -53,5 +52,8 @@ button,.Add{
     border-radius: 15px;
     background-color: indianred;
     color: white;
+    text-align: center;
     border-width: 0;
+    font-size: 20px;
+    margin-top: 20px;
 }
