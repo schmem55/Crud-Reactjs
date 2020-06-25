@@ -1,23 +1,51 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker'
 import './input.css';
 
+var displayedMembers = [{
+  id:"1",
+  name:"jeremy",
+  amount:"1000",
+  mitzva:"chichi",
+  date:"korah"
+},
+{
+  id:"2",
+  name:"david",
+  amount:"100",
+  mitzva:"samoukh",
+  date:"yitro"
+},
+{
+  id:"3",
+  name:"david",
+  amount:"200",
+  mitzva:"chichi",
+  date:"yitro"
+},
+{
+  id:"4",
+  name:"aaron",
+  amount:"226",
+  mitzva:"hagbaa",
+  date:"rosh hashana"
+}]
+
 export default function Input(props) {
-  const [members,setMembers] = useState([])
+  const [members,setMembers] = useState(displayedMembers)
 
   const [name,setName] = useState()
   const [amount,setAmount] = useState()
   const [mitzva,setMitzva] = useState()
   const [date,setDate] = useState()
 
-
+  const [nameToSearch,setNameToSearch] = useState()
   const [isUpdating,setIsUpdating] = useState(false)
   const [memberToUpdate,setMemberToUpdate]=useState({
     id:"",
     name:"",
     amount:"",
     mitzva:"",
-    date:"'"
+    date:""
   })
 
   async function handleSubmit(e){
@@ -32,6 +60,7 @@ export default function Input(props) {
       date:date
     }
     await setMembers(prevState=>[...members,newMember])
+    displayedMembers.push(newMember)
     setName('')
     setAmount('')
     setMitzva('')
@@ -39,7 +68,9 @@ export default function Input(props) {
   }
 
   function deleteMember (id){
-    setMembers(members.filter((member)=>member.id !== id))
+    const result = displayedMembers.filter((member)=>member.id !== id)
+    setMembers(result)
+    displayedMembers = result
   }
 
   function updateMember(id){
@@ -66,7 +97,9 @@ export default function Input(props) {
       date:memberToUpdate.date
     }
 
-    await setMembers(members.map((member)=>(member.id === newMember.id? newMember:member)))
+    const result = displayedMembers.map((member)=>(member.id === newMember.id? newMember:member))
+    await setMembers(result)
+    displayedMembers = result
     setName('')
     setAmount('')
     setMitzva('')
@@ -74,6 +107,12 @@ export default function Input(props) {
     setIsUpdating(prevState=>false)
   }
 
+  function searchForName(input){
+    setNameToSearch(input)
+    const result = displayedMembers.filter((member)=>member.name.includes(input))
+    console.log(input)
+    setMembers(result)
+  }
   return (
     <div>
       <h1>Exercise</h1>
@@ -101,6 +140,9 @@ export default function Input(props) {
             <input className="Add"type="submit" value="Add " />
           </form>
        
+       <div className="Search">
+        Search: <input value={nameToSearch?nameToSearch:''} onChange={e=>searchForName(e.target.value)}/>
+       </div>
       <div className="Members">
      
         <div className="Title">
