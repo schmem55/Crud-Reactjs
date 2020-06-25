@@ -43,6 +43,9 @@
     display: flex;
     justify-content: space-between;
 }
+.Item{
+    width: 100px;
+}
 .Buttons{
     display: flex;
     width: 400px;

@@ -147,16 +147,16 @@ export default function Input(props) {
      
         <div className="Title">
           <div className="UserItems">
-            <span>
+            <span className="Item">
             Name
             </span>
-            <span>
+            <span className="Item">
               Amount 
             </span>
-            <span>
+            <span className="Item">
               Mitzva
             </span>
-            <span>
+            <span className="Item">
               Date
             </span>
           </div>
@@ -167,16 +167,16 @@ export default function Input(props) {
             <div className="UserDetails" key={k.id}>
 
               <div className="UserItems">
-                <span>
+                <span className="Item">
                   {k.name}
                 </span>
-                <span>
+                <span className="Item">
                   {k.amount}
                 </span>
-                <span>
+                <span className="Item">
                   {k.mitzva}
                 </span>
-                <span>
+                <span className="Item">
                   {k.date}
                 </span>
                
