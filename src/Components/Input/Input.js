@@ -189,7 +189,7 @@ export default function Input(props) {
             
             </div>
         ):
-        <p>no members added</p>}
+        <p>no members </p>}
       </div>
 
       {isUpdating && (
